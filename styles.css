@@ -1092,6 +1092,11 @@ body.about-body {
         width: 100%; 
     }
 
+    .textbox-italic {
+        width: 100%;
+    }
+    
+
     .back-container {
         margin-top: 90px; 
     }
