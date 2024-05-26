@@ -345,6 +345,10 @@ body.about-body {
     position: absolute;
     top: 270px;
     left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10px; 
 }
 .cv-button, .linkedin-button, .pdf-button {
     width: 165px;
@@ -357,6 +361,8 @@ body.about-body {
     margin-right: 10px;
     outline: none; 
     border: none; 
+    text-decoration: none;
+    color: #1A1A1A;
 }
 .cv-button {
     background-color: #F3DE8A;
@@ -843,6 +849,8 @@ body.about-body {
         line-height: 60px;
         margin: 5px;
         font-size: 14px;
+        color: #1A1A1A;
+        text-decoration: none;
     }
     .experience-container, .education-container, .capabilities-container {
         position: static;
@@ -929,21 +937,20 @@ body.about-body {
         width: 100%; 
         left: 0;
         padding-left: 20px; 
-        color: black; /* Ensure it contrasts with the background */
-        z-index: 1000; /* Bring it to the front */
+        color: black; 
+        z-index: 1000; 
     }
     .fixed-text.active {
-        text-decoration: underline; /* Ensure active state has an underline */
+        text-decoration: underline; 
     }
      .fixed-text.active::after {
         content: none;
     }
-
     .dark-theme .fixed-text.active::after {
         content: none;
     }
     .dark-theme .fixed-text {
-        color: white; /* Dark mode text color for mobile */
+        color: white; 
     }
     .scrollable-content h1 {
         font-size: 48px; 
