@@ -1,48 +1,22 @@
-/* General reset for box-sizing */
-* {
-    box-sizing: border-box;
-}
-
-/* General styles */
-a:hover, button:hover, input[type="submit"]:hover {
-    cursor: url('assets/cursorhover.svg'), auto;
-}
-
-body, html {
-    scroll-behavior: smooth;
-    cursor: url('assets/cursor.svg'), auto;
-    margin: 0;
-    height: 100%;
-    font-family: 'NeueMontreal-Regular', sans-serif;
-}
-
-body.home-body,
-body.work-body,
-body.contact-body {
-    overflow: hidden;
-}
-
+/* FONTS */
 @font-face {
     font-family: 'NeueMontreal-Regular';
     src: url('assets/NeueMontreal-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'NeueMontreal-Light';
     src: url('assets/NeueMontreal-Light.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'NeueMontreal-Italic';
     src: url('assets/NeueMontreal-Italic.otf') format('opentype');
     font-weight: normal;
     font-style: italic;
 }
-
 @font-face {
     font-family: 'Avara-Bold';
     src: url('assets/Avara-Bold.otf') format('opentype');
@@ -50,12 +24,78 @@ body.contact-body {
     font-style: normal;
 }
 
+
+
+/* CURSOR */
+a:hover, button:hover, input[type="submit"]:hover {
+    cursor: url('assets/cursorhover.svg'), auto;
+}
+
+
+
+/* ANIMATIONS */
+@keyframes slide-up {
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg); 
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes drop-in {
+    0% {
+        transform: translateY(-100vh);
+        opacity: 0; 
+        visibility: hidden; 
+    }
+    1% {
+        opacity: 0; 
+        visibility: visible; 
+    }
+    to {
+        transform: translateY(0); 
+        opacity: 1;
+        visibility: visible; 
+    }
+}
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+
+/* GLOBAL STYLES */
+* {
+    box-sizing: border-box;
+}
+body, html {
+    scroll-behavior: smooth;
+    cursor: url('assets/cursor.svg'), auto;
+    margin: 0;
+    height: 100%;
+    font-family: 'NeueMontreal-Regular', sans-serif;
+}
+body.home-body, body.work-body, body.contact-body {
+    overflow: hidden;
+}
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .menu {
     z-index: 1000;
     text-align: center;
@@ -64,14 +104,12 @@ body.contact-body {
     left: 50%;
     transform: translateX(-50%);
 }
-
 .menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: inline-block;
 }
-
 .menu ul li {
     display: inline-block;
     margin-left: 3px;
@@ -80,34 +118,27 @@ body.contact-body {
     border: none;
     border-radius: 20px;
 }
-
 .menu ul li:first-child {
     margin-left: 0;
 }
-
 .menu ul li:hover {
     background-color: #9498F6; 
 }
-
 .menu ul li:hover a {
     color: #F3DE8A; 
 }
-
 .menu ul li a {
     text-decoration: none;
     color: #1A1A1A;
     font-size: 20px;
     font-family: 'NeueMontreal-Regular', sans-serif; 
 }
-
 .menu ul li.active {
     background-color: #3e3e3e; 
 }
-
 .menu ul li.active a {
     color: #f5f5f5; 
 }
-
 .title {
     text-decoration: none; 
     font-size: 20px;
@@ -117,7 +148,6 @@ body.contact-body {
     position: relative; 
     z-index: 1; 
 }
-
 .title:hover::before {
     content: ''; 
     position: absolute; 
@@ -129,7 +159,6 @@ body.contact-body {
     background-color: #EDC7DD; 
     border-radius: 50%; 
 }
-
 .footer {
     position: fixed;
     bottom: 0;
@@ -138,108 +167,11 @@ body.contact-body {
     height: 40px;
     background-color: #EDC7DD; 
 }
-
 .menu-toggle-container {
     display: none;
 }
 
-/* RESPONSIVE */
-@media screen and (max-width: 767px) {
-    body {
-        margin-left: 0; 
-        margin-right: 0; 
-        overflow: hidden; 
-        height: 100%; 
-    }
 
-    .header {
-        flex-direction: row; 
-        justify-content: flex-start; 
-    }
-
-    .title {
-        padding: 15px 0; 
-        z-index: 100;
-    }
-
-    .menu {
-        display: none;
-        position: absolute;
-        top: 50px; 
-        right: -155px; 
-        text-align: right; 
-    }
-
-    .menu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        text-align: right;
-    }
-    
-    .menu ul li {
-        display: block; 
-        margin: 5px 0; 
-        background-color: #D9D9D9;
-        padding: 5px 10px;
-        border: none;
-        border-radius: 20px;
-    }
-
-    .menu-toggle-container {
-        position: absolute;
-        display: block;
-        top: 15px; 
-        right: 20px; 
-    }
-
-    .menu.show-menu {
-        display: block;
-    }
-
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-    
-    .spin-animation {
-        animation: spin 0.5s linear;
-    }
-    
-    .center-svg {
-        position: fixed;
-        bottom: 40px;
-        left: 0;
-        width: 100%;
-        background-image: url('assets/main.png');
-        background-size: contain; 
-        background-position: bottom center;
-        background-repeat: no-repeat; 
-        z-index: -1;
-    }
-    
-    .footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 40px;
-        background-color: #EDC7DD;
-        z-index: 1; 
-    }
-
-    .text-behind {
-        display: none; 
-    }
-
-    .animated-item {
-        display: none; 
-    }
-}
 
 
 
@@ -253,13 +185,6 @@ body.contact-body {
     transform: translateY(100vh); 
     animation: slide-up 1.5s ease-in-out forwards;
 }
-@keyframes slide-up {
-    to {
-        
-        transform: translateY(0);
-    }
-}
-
 .text-behind {
     position: absolute;
     color: #1A1A1A; 
@@ -268,7 +193,6 @@ body.contact-body {
     transition: transform 0.2s; 
     top: 100px;
 }
-
 .center-svg { /* main.png image */
     display: flex;
     justify-content: center;
@@ -291,15 +215,6 @@ body.contact-body {
     bottom: 40px; 
     left: 35%; 
 }
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg); 
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
 .contact-svg {
     position: absolute;
     bottom: 60px;
@@ -311,7 +226,6 @@ body.contact-body {
 .contact-svg:hover {
     animation-play-state: paused;
 }
-
 .footer-text {
     position: absolute;
     bottom: 40px; 
@@ -333,34 +247,9 @@ body.contact-body {
 
 
 
-
-
-
-
 /* Work styles */
 
-@keyframes drop-in {
-    0% {
-        transform: translateY(-100vh);
-        opacity: 0; 
-        visibility: hidden; 
-    }
-    1% {
-        opacity: 0; 
-        visibility: visible; 
-    }
-    to {
-        transform: translateY(0); 
-        opacity: 1;
-        visibility: visible; 
-    }
-}
-
-.branding-svg,
-.webdesign-svg,
-.illustrations-svg,
-.toydesign-svg,
-.misc-svg {
+.branding-svg, .webdesign-svg, .illustrations-svg, .toydesign-svg, .misc-svg {
     position: fixed;
     bottom: -100px;
     z-index: 1; 
@@ -368,7 +257,6 @@ body.contact-body {
     visibility: hidden; 
     animation: drop-in 1s ease forwards; 
 }
-
 .branding-svg {
     position: fixed;
     bottom: 40px; 
@@ -403,7 +291,6 @@ body.contact-body {
     z-index: 1; 
     animation-delay: 0.1s; 
 }
-
 .branding-svg:hover {
     content: url('assets/branding-hover.svg');
 }
@@ -417,48 +304,6 @@ body.contact-body {
     content: url('assets/toydesign-hover.svg');
 }
 
-@media screen and (max-width: 767px) {
-    body.work-body {
-        overflow: auto; 
-        height: 100%;
-    }
-
-    .header {
-        position: fixed;
-        top: 0;
-        left: 10px;
-        right: 10px;
-        width: 100%;
-        z-index: 1000; 
-    }
-
-    .branding-svg,
-    .webdesign-svg,
-    .illustrations-svg,
-    .toydesign-svg {
-        position: static;
-        animation: none;
-        visibility: visible;
-        opacity: 1;
-        width: 100%;
-    }
-
-    .misc-svg {
-        content: none;
-    }
-
-    .branding-svg:hover,
-    .webdesign-svg:hover,
-    .illustrations-svg:hover,
-    .toydesign-svg:hover,
-    .misc-svg:hover {
-        content: none;
-    }
-    
-}
-
-
-
 
 
 /* About styles */
@@ -467,7 +312,6 @@ body.about-body {
     height: 1500px; 
     overflow: auto; 
 }
-
 .intro-text {
     width: 520px;
     position: absolute;
@@ -476,7 +320,6 @@ body.about-body {
     font-family: 'Avara-Bold';
     font-size: 24px;
 }
-
 .portfolio-pic {
     width: 400px;
     height: 632px;
@@ -484,7 +327,6 @@ body.about-body {
     top: 140px;
     left: 580px;
 }
-
 .additional-text {
     width: 331px;
     position: absolute;
@@ -493,7 +335,6 @@ body.about-body {
     font-family: 'Neue Montreal', sans-serif;
     font-size: 14px;
 }
-
 .buttons button {
     transition: transform 0.3s ease;
 }
@@ -505,10 +346,7 @@ body.about-body {
     top: 270px;
     left: 30px;
 }
-
-.cv-button,
-.linkedin-button,
-.pdf-button {
+.cv-button, .linkedin-button, .pdf-button {
     width: 165px;
     height: 91px;
     line-height: 91px; 
@@ -520,7 +358,6 @@ body.about-body {
     outline: none; 
     border: none; 
 }
-
 .cv-button {
     background-color: #F3DE8A;
 }
@@ -530,33 +367,16 @@ body.about-body {
 .pdf-button {
     background-color: #EDC7DD;
 }
-
-@keyframes floating {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
 .scroll-icon {
     position: absolute;
     right: 30px;
     bottom: 60px;
     animation: floating 3s ease infinite;
 }
-
-.experience-details p,
-.dates-text p,
-.capabilities-container .dates-text p,
-.capabilities-container .experience-details p {
+.experience-details p, .dates-text p, .capabilities-container .dates-text p, .capabilities-container .experience-details p {
     margin-bottom: -12px; 
     line-height: 1.3;
 }
-
 .experience-container {
     position: absolute;
     top: 857px;
@@ -622,108 +442,6 @@ body.about-body {
 
 
 
-/* Responsive for Tablets */
-@media screen and (max-width: 1024px) {
-    .about-body {
-        margin: 0px 20px; /* Adds 50px top and bottom margin, 20px left and right margin */
-    }
-
-    .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        margin-top: 100px; /* Adds space between intro text and buttons */
-    }
-
-    .cv-button, .linkedin-button, .pdf-button {
-        width: 100px;
-        height: 60px;
-        line-height: 60px;
-        margin: 5px;
-        font-size: 14px;
-    }
-
-    .line, .line2, .line3 {
-        display: none; /* Hide lines */
-    }
-
-    .scroll-icon, .contact-button {
-        display: none; /* Hide scroll svg and contact me svg */
-    }
-
-    .dates-text, .experience-details {
-        display: inline-block;
-        vertical-align: top;
-        width: calc(50% - 20px); /* Two columns */
-    }
-
-}
-
-/* Responsive for Mobile */
-@media screen and (max-width: 767px) {
-    .about-body {
-        margin: 50px 20px; /* Adds 50px top and bottom margin, 20px left and right margin */
-    }
-
-    .intro-text, .additional-text, .experience-text, .dates-text, .experience-details, .capabilities-container .dates-text, .capabilities-container .experience-details {
-        width: calc(100% - 40px); /* Adjust width for the new margin */
-        left: 20px; /* Adjust position for the new margin */
-        position: static;
-    }
-
-    .intro-text {
-        margin-bottom: 20px; /* Adds margin at the bottom of intro-text */
-    }
-
-    .portfolio-pic {
-        width: 100%;
-        height: auto;
-        position: static;
-    }
-
-    .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        margin-top: 10px; /* Adds space between intro text and buttons */
-    }
-
-    .cv-button, .linkedin-button, .pdf-button {
-        width: 100px;
-        height: 60px;
-        line-height: 60px;
-        margin: 5px;
-        font-size: 14px;
-    }
-
-    .experience-container, .education-container, .capabilities-container {
-        position: static;
-        margin-top: 20px;
-    }
-
-    .line, .line2, .line3 {
-        display: none; /* Hide lines */
-    }
-
-    .scroll-icon, .contact-button {
-        display: none; /* Hide scroll svg and contact me svg */
-    }
-
-    .dates-text, .experience-details {
-        display: inline-block;
-        vertical-align: top;
-        width: calc(50% - 20px); /* Two columns */
-    }
-
-}
-
-
-
-
-
-
-
-
 /* Contact styles */
 
 .lemon {
@@ -736,7 +454,6 @@ body.about-body {
     background: #F3DE8A; 
     border-radius: 50%;
 }
-
 .center-text {
     position: absolute;
     top: 43%;
@@ -746,7 +463,6 @@ body.about-body {
     font-family: 'NeueMontreal-Regular', sans-serif;
     text-align: center;
 }
-
 .email-text {
     position: absolute;
     top: 54%;
@@ -759,7 +475,6 @@ body.about-body {
 .email-text a {
     color: #1A1A1A; 
 }
-
 .social-icons {
     display: flex;
     justify-content: center;
@@ -774,34 +489,6 @@ body.about-body {
     transform: scale(1.5); 
 }
 
-@media screen and (max-width: 767px) {
-    img[src="assets/lemon.svg"] {
-        transform: translateX(-50%) rotate(90deg);
-        bottom: 40px;
-        left: 50%;
-        width: 100vh;
-    }
-
-    .center-text {
-        font-size: 25px;
-    }
-
-    .email-text {
-        font-size: 25px;
-        top: 56%;
-    }
-
-    .social-icons img {
-        width: 30px; 
-        height: 30px;
-        margin: 0 10px;
-    }
- }
-
- 
-
-
-
 
 
  /* Minigame styles */
@@ -815,51 +502,38 @@ body.about-body {
 
 
 
-
-
-
-
 /* Project pages styles */
+
 .split-container {
     display: flex;
     height: 100vh;
 }
-
 .static-content {
     width: 25%;
     background-color: lightblue;
 }
-
 .scrollable-content {
     width: 75%;
     overflow-y: auto;
     padding: 20px;
 }
-
-/* H1 styling */
 .scrollable-content h1 {
     font-family: 'NeueMontreal-Light', sans-serif;
     font-size: 96px;
 }
-
-/* Back button and text alignment */
 .back-container {
     text-align: left;
-    margin-top: 20px; /* Adjust the margin as needed */
-    margin-left: 20px; /* Adjust the margin as needed */
+    margin-top: 20px;
+    margin-left: 20px; 
 }
-
 .back-button {
     vertical-align: middle;
 }
-
 .section-text {
     vertical-align: middle;
     font-family: 'Avara-Bold', sans-serif;
     font-size: 24px;
 }
-
-/* Fixed position text styles */
 .fixed-text {
     position: fixed;
     width: 22%;
@@ -867,73 +541,59 @@ body.about-body {
     font-family: 'NeueMontreal-Regular', sans-serif;
     font-size: 24px;
     color: #1A1A1A;
-    text-decoration: none; /* Remove underline by default */
+    text-decoration: none;
 }
-
-/* Underline for active page */
 .fixed-text.active {
     text-decoration: underline;
 }
-
-/* Ellipse style */
 .fixed-text.active::after {
     content: '';
     position: absolute;
     top: -40%;
-    left: calc(100% - 150px); /* Position at the end of the text, 10px to the left */
-    width: 70px; /* Adjust width */
-    height: 34px; /* Adjust height */
+    left: calc(100% - 150px);
+    width: 70px; 
+    height: 34px;
     background-color: #1A1A1A;
     border-radius: 50%;
 }
-
 .scrollable-content img {
-    width: 100%; /* Make the image width 100% of its container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Ensure proper rendering as a block element */
-    margin-bottom: 20px; /* Add some space between images */
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    margin-bottom: 20px; 
 }
-
-/* Textbox styles */
 .textbox {
-    width: 800px; /* Set the width of the textbox */
-    font-family: 'NeueMontreal-Regular', sans-serif; /* Set font family */
-    font-size: 20px; /* Set font size */
-    color: #1A1A1A; /* Set text color */
-    margin-bottom: 20px; /* Add some space below the textbox */
+    width: 800px;
+    font-family: 'NeueMontreal-Regular', sans-serif; 
+    font-size: 20px; 
+    color: #1A1A1A; 
+    margin-bottom: 20px; 
 }
-
-/* Ensure the paragraph inside the textbox fits the content */
 .textbox p {
-    margin: 0; /* Remove default margins */
-    line-height: 1.5; /* Set line height for better readability */
+    margin: 0; 
+    line-height: 1.5;
 }
-
 .textbox a {
-    color: inherit; /* Inherit text color from parent */
+    color: inherit;
 }
-
 .textbox-italic {
-    width: 800px; /* Set the width of the textbox */
-    font-family: 'NeueMontreal-Italic', sans-serif; /* Set font family to italic */
-    font-size: 20px; /* Set font size */
-    color: #595959; /* Set text color to the new specified color */
-    margin-bottom: 20px; /* Add some space below the textbox */
+    width: 800px;
+    font-family: 'NeueMontreal-Italic', sans-serif; 
+    font-size: 20px; 
+    color: #595959;
+    margin-bottom: 20px; 
 }
-
-/* Ensure the paragraph inside the textbox fits the content */
 .textbox-italic p {
-    margin: 0; /* Remove default margins */
-    line-height: 1.5; /* Set line height for better readability */
+    margin: 0; 
+    line-height: 1.5;
 }
-
 .illustration-styles {
-    position: relative; /* Establish a positioning context for the children */
-    width: 100%; /* Adjust as needed */
-    height: 500px; /* Adjust as needed, or use a different method to define height */
+    position: relative; 
+    width: 100%; 
+    height: 500px;
 }
 .illustration-styles img {
-    position: absolute; /* Position absolutely within the .illustration-styles container */
+    position: absolute; 
     width: auto;
     height: auto;
     max-width: none;
@@ -965,33 +625,6 @@ body.about-body {
     width: 30%;
     z-index: 1;
 }
-
-
-
-/* Media query for responsive design */
-@media (max-width: 768px) {
-    .illustration-styles {
-        display: flex;
-        flex-direction: column; 
-        align-items: center;
-        position: static; 
-        height: auto; 
-    }
-
-    .illustration-styles img {
-        position: static; 
-        width: 80%; 
-        height: auto;
-        margin: 0;
-    }
-
-    .illustration-styles img:nth-child(4) {
-        width: 100%; /* Override the previous width setting to make it 100% */
-    }
-}
-
-
-
 .fixed-text:nth-of-type(1) {
     top: 200px;
 }
@@ -1004,25 +637,18 @@ body.about-body {
 .fixed-text:nth-of-type(4) {
     top: 290px;
 }
-
 .mapa-body .static-content {
     background-color: #CAE7B9;
 }
 .resourcefulworld-body .static-content {
     background-color: #F3DE8A;
 }
-.lazos-body .static-content,
-.stella-body .static-content {
+.lazos-body .static-content, .stella-body .static-content {
     background-color: #EDC7DD;
 }
-.microtrendy-body .static-content,
-.dart-body .static-content,
-.goodreads-body .static-content,
-.room4u-body .static-content,
-.illustrations-body .static-content {
+.microtrendy-body .static-content, .dart-body .static-content, .goodreads-body .static-content, .room4u-body .static-content, .illustrations-body .static-content {
     background-color: #D9D9D9;
 }
-
 .dark-theme {
     background-color: #1a1a1a;
     color: white;
@@ -1059,7 +685,220 @@ body.about-body {
     background-color: white;
 }
 
-@media (max-width: 767px) {
+
+/* RESPONSIVE MOBILE STYLES */
+
+@media screen and (max-width: 767px) {
+    
+    /* General */
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    
+    body {
+        margin-left: 0; 
+        margin-right: 0; 
+        overflow: hidden; 
+        height: 100%; 
+    }
+    .header {
+        flex-direction: row; 
+        justify-content: flex-start; 
+    }
+    .title {
+        padding: 15px 0; 
+        z-index: 100;
+    }
+    .menu {
+        display: none;
+        position: absolute;
+        top: 50px; 
+        right: -155px; 
+        text-align: right; 
+    }
+    .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: right;
+    }
+    .menu ul li {
+        display: block; 
+        margin: 5px 0; 
+        background-color: #D9D9D9;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 20px;
+    }
+    .menu-toggle-container {
+        position: absolute;
+        display: block;
+        top: 15px; 
+        right: 20px; 
+    }
+    .menu.show-menu {
+        display: block;
+    }
+
+
+    /* Home */
+    .spin-animation {
+        animation: spin 0.5s linear;
+    }
+    .center-svg {
+        position: fixed;
+        bottom: 40px;
+        left: 0;
+        width: 100%;
+        background-image: url('assets/main.png');
+        background-size: contain; 
+        background-position: bottom center;
+        background-repeat: no-repeat; 
+        z-index: -1;
+    } 
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        background-color: #EDC7DD;
+        z-index: 1; 
+    }
+    .text-behind {
+        display: none; 
+    }
+    .animated-item {
+        display: none; 
+    }
+    .contact-svg {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 50px; 
+        height: 50px; 
+        z-index: 1000; 
+    }
+
+
+    /* Body */
+    body.work-body {
+        overflow: auto; 
+        height: 100%;
+    }
+    .header {
+        position: fixed;
+        top: 0;
+        left: 10px;
+        right: 10px;
+        width: 100%;
+        z-index: 1000; 
+    }
+    .branding-svg, .webdesign-svg, .illustrations-svg, .toydesign-svg {
+        position: static;
+        animation: none;
+        visibility: visible;
+        opacity: 1;
+        width: 100%;
+    }
+    .misc-svg {
+        content: none;
+    }
+    .branding-svg:hover, .webdesign-svg:hover, .illustrations-svg:hover, .toydesign-svg:hover, .misc-svg:hover {
+        content: none;
+    }
+
+
+    /* About */
+    .about-body {
+        margin: 50px 20px; 
+    }
+    .intro-text, .additional-text, .experience-text, .dates-text, .experience-details, .capabilities-container .dates-text, .capabilities-container .experience-details {
+        width: calc(100% - 40px); 
+        left: 20px;
+        position: static;
+    }
+    .intro-text {
+        margin-bottom: 20px; 
+    }
+    .portfolio-pic {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 10px; 
+    }
+    .cv-button, .linkedin-button, .pdf-button {
+        width: 100px;
+        height: 60px;
+        line-height: 60px;
+        margin: 5px;
+        font-size: 14px;
+    }
+    .experience-container, .education-container, .capabilities-container {
+        position: static;
+        margin-top: 20px;
+    }
+    .line, .line2, .line3 {
+        display: none; 
+    }
+    .scroll-icon {
+        display: none; 
+    }
+    .dates-text, .experience-details {
+        display: inline-block;
+        vertical-align: top;
+        width: calc(50% - 20px); 
+    }
+
+
+    /* Contact */
+    img[src="assets/lemon.svg"] {
+        transform: translateX(-50%) rotate(90deg);
+        bottom: 40px;
+        left: 50%;
+        width: 100vh;
+    }
+    .center-text {
+        font-size: 25px;
+    }
+    .email-text {
+        font-size: 25px;
+        top: 56%;
+    }
+    .social-icons img {
+        width: 30px; 
+        height: 30px;
+        margin: 0 10px;
+    }
+
+
+    /* Projects */
+    .illustration-styles {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        position: static; 
+        height: auto; 
+    }
+    .illustration-styles img {
+        position: static; 
+        width: 80%; 
+        height: auto;
+        margin: 0;
+    }
+    .illustration-styles img:nth-child(4) {
+        width: 100%; 
+    }
     .split-container {
         flex-direction: column;
     }
@@ -1084,23 +923,40 @@ body.about-body {
     .fixed-text.active::after {
         content: none; 
     }
+    .fixed-text {
+        position: absolute;
+        top: 70px; 
+        width: 100%; 
+        left: 0;
+        padding-left: 20px; 
+        color: black; /* Ensure it contrasts with the background */
+        z-index: 1000; /* Bring it to the front */
+    }
+    .fixed-text.active {
+        text-decoration: underline; /* Ensure active state has an underline */
+    }
+     .fixed-text.active::after {
+        content: none;
+    }
+
+    .dark-theme .fixed-text.active::after {
+        content: none;
+    }
+    .dark-theme .fixed-text {
+        color: white; /* Dark mode text color for mobile */
+    }
     .scrollable-content h1 {
         font-size: 48px; 
     }
-
     .textbox {
         width: 100%; 
     }
-
     .textbox-italic {
         width: 100%;
     }
-    
-
     .back-container {
         margin-top: 90px; 
     }
-
     .section-text {
         margin-top: 20px;
     }

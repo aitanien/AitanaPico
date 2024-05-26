@@ -10,13 +10,8 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Get the current page URL
             var currentPage = window.location.pathname;
-            
-            // Extract the page name from the URL
             var currentPageName = currentPage.split("/").pop().split(".")[0];
-            
-            // Add a class to the body based on the current page
             document.body.classList.add(currentPageName + "-body");
         });
     </script>
@@ -24,7 +19,6 @@
 
 <body>
     <div class="split-container">
-        <!-- Static content (left side) -->
         <div class="static-content">
             <div class="header">
                 <!-- Aitana Picó title -->
